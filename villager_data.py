@@ -10,13 +10,20 @@ def all_species(filename):
     Return:
         - set[str]: a set of strings
     """
-
-    species = set()
+    file = open(filename)
+    species_list =[]
+    for line in file:
+        name, species_temp, personality, hobby, motto = line.split('|')
+        species_list.append(species_temp)
+    
+    species = set(species_list)
 
     # TODO: replace this with your code
 
+    file.close()
     return species
 
+print(all_species("villagers.csv"))
 
 def get_villagers_by_species(filename, search_string="All"):
     """Return a list of villagers' names by species.
